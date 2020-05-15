@@ -117,6 +117,10 @@ void draw_scene(const Scene* scene)
 	glTranslatef(-forward ,0, -8);
 	glBindTexture(GL_TEXTURE_2D, scene->texture_id);
 	draw_model(&(scene->cat));
+	glTranslatef(-forward, 15, -8);
+	draw_model(&(scene->cat));
+	glTranslatef(15, forward, -8);
+	draw_model(&(scene->cat));
 	glPopMatrix();
 	
 	
