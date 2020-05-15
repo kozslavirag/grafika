@@ -100,9 +100,18 @@ void DrawSky()
 void draw_scene(const Scene* scene)
 {
 	double forward = calc_test();
+	static int last_frame_time = 0;
+        int current_time;
+        double elapsed_time;
 	int BlendType = 0;
-    set_material(&(scene->material));
-    draw_origin();
+        set_material(&(scene->material));
+        draw_origin();
+	
+	current_time = glutGet(GLUT_ELAPSED_TIME);
+        elapsed_time = (double)(current_time - last_frame_time) / 1000;
+        last_frame_time = current_time;
+ 
+        forward = forward * elapsed_time;
 	
 	glPushMatrix();
 	glTranslatef(-forward ,0, -8);
